@@ -1,4 +1,4 @@
-import { forwardRef, SVGProps } from "react";
+import { SVGProps } from "react";
 
 type SvgExtendedProps = SVGProps<SVGSVGElement> & {
   active?: boolean;
