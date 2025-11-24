@@ -63,7 +63,7 @@ export default function Navigation() {
           ))}
         </ul>
       </nav>
-      <div className="fixed top-[45px] right-4 z-50 lg:hidden">
+      <div className="block top-[45px] right-4 z-50 lg:hidden">
         <Hamburger
           size={28}
           rounded

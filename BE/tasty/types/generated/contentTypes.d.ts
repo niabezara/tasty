@@ -430,6 +430,37 @@ export interface AdminUser extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiFavRecepieFavRecepie extends Struct.SingleTypeSchema {
+  collectionName: 'fav_recepies';
+  info: {
+    displayName: 'FavRecepie';
+    pluralName: 'fav-recepies';
+    singularName: 'fav-recepie';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    favComponents: Schema.Attribute.Component<
+      'basic-component.components',
+      true
+    >;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::fav-recepie.fav-recepie'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiMainCategoryMainCategory extends Struct.SingleTypeSchema {
   collectionName: 'main_categories';
   info: {
@@ -971,6 +1002,7 @@ declare module '@strapi/strapi' {
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
+      'api::fav-recepie.fav-recepie': ApiFavRecepieFavRecepie;
       'api::main-category.main-category': ApiMainCategoryMainCategory;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
