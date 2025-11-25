@@ -1,0 +1,20 @@
+{
+  "kind": "singleType",
+  "collectionName": "collections",
+  "info": {
+    "singularName": "collection",
+    "pluralName": "collections",
+    "displayName": "collection"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "recipe": {
+      "type": "component",
+      "component": "basic-component.components",
+      "repeatable": true
+    }
+  }
+}

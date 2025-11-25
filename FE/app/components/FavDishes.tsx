@@ -1,18 +1,18 @@
-import { getStrapiData } from "../data-access/getStrapiData";
+import { FavResponse } from "../types";
 import FavRecepiesVideoComponent from "./FavRecepiesVideoComponent";
 
-async function FavDishes() {
-  const FavData = await getStrapiData(`/api/fav-recepie?populate=*`);
-
+function FavDishes({ data }: { data: FavResponse }) {
   return (
-    <div className=" px-4 pt-4 pb-4 mt-6 md:mt-0 md:pb-0 lg:px-0">
+    <div className="flex flex-col items-center px-4 pt-4 pb-4 mt-6 md:mt-0 md:pb-0 lg:px-0">
       <div>
-        <h2>
-          <span className="font-drama text-[#734060] text-4xl">Watch</span>{" "}
-          <span className="font-sans">My Favorite Recipes</span>
+        <h2 className="flex gap-5 text-center items-center">
+          <span className="font-drama text-[#734060] text-6xl">Watch</span>{" "}
+          <span className="font-sans font-semibold text-2xl">
+            My Favorite Recipes
+          </span>
         </h2>
       </div>
-      <FavRecepiesVideoComponent data={FavData.data} />
+      <FavRecepiesVideoComponent data={data.data} />
     </div>
   );
 }

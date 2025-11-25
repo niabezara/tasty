@@ -1,11 +1,18 @@
 import Link from "next/link";
 import { StrapiImage } from "../lib/strapi-image";
 import { MainCategoryData } from "../types";
+import { cn } from "../lib/utils";
 
-function Card({ data }: { data: MainCategoryData }) {
+function Card({ data, type }: { data: MainCategoryData; type: string }) {
   return (
-    <div className="md:max-w-6xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-4 px-4 lg:px-0">
-      {data.MainComponents.map((component) => (
+    <div
+      className={cn(
+        type === "Main"
+          ? "md:max-w-6xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-4 px-4 lg:px-0"
+          : ""
+      )}
+    >
+      {data?.MainComponents?.map((component) => (
         <article key={component.id} className="text-center">
           <Link
             href=""

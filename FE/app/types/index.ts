@@ -1,4 +1,8 @@
 // ---------- MAIN CATEGORY TYPES ---------- //
+export interface MainCategoryResponse {
+  data: MainCategoryData;
+  meta: Record<string, unknown>;
+}
 export interface MainCategoryData {
   id: number;
   documentId: string;
@@ -58,6 +62,11 @@ export interface ImageFormat {
 }
 
 // ---------- VIDEO TYPES ---------- //
+
+export interface FavResponse {
+  data: FavData;
+  meta: Record<string, unknown>;
+}
 
 export interface FavData {
   id: number;

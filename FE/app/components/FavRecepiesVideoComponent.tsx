@@ -26,7 +26,7 @@ function FavRecepiesVideoComponent({ data }: { data: FavData }) {
       {data.favComponents.map((component, index) => (
         <div
           key={component.id}
-          className="min-w-[260px] max-w-[260px] shrink-0 p-2 cursor-pointer"
+          className="min-w-[260px] max-w-[260px] pt-5 shrink-0 p-2 cursor-pointer"
           onMouseEnter={() => handleMouseEnter(index)}
           onMouseLeave={() => handleMouseLeave(index)}
         >
