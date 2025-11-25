@@ -26,7 +26,7 @@ function FavRecepiesVideoComponent({ data }: { data: FavData }) {
       {data.favComponents.map((component, index) => (
         <div
           key={component.id}
-          className="min-w-[260px] max-w-[260px] shrink-0 p-2"
+          className="min-w-[260px] max-w-[260px] shrink-0 p-2 cursor-pointer"
           onMouseEnter={() => handleMouseEnter(index)}
           onMouseLeave={() => handleMouseLeave(index)}
         >
@@ -51,7 +51,7 @@ function FavRecepiesVideoComponent({ data }: { data: FavData }) {
           </div>
 
           {/* TITLE */}
-          <h3 className="font-semibold mt-3 text-center text-sm">
+          <h3 className="font-semibold mt-3 text-center text-lg font-domaine">
             {component.title}
           </h3>
         </div>
