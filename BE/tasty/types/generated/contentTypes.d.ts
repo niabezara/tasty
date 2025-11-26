@@ -450,8 +450,11 @@ export interface ApiCollectionCollection extends Struct.SingleTypeSchema {
       'api::collection.collection'
     > &
       Schema.Attribute.Private;
+    MainComponents: Schema.Attribute.Component<
+      'basic-component.components',
+      true
+    >;
     publishedAt: Schema.Attribute.DateTime;
-    recipe: Schema.Attribute.Component<'basic-component.components', true>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;

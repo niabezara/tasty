@@ -11,7 +11,7 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "recipe": {
+    "MainComponents": {
       "type": "component",
       "component": "basic-component.components",
       "repeatable": true
