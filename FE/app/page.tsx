@@ -1,6 +1,7 @@
 import Collection from "./components/Collection";
 import FavDishes from "./components/FavDishes";
 import MainDishes from "./components/MainDishes";
+import { SearchDrawer } from "./components/Search";
 import { getStrapiData } from "./data-access/getStrapiData";
 
 export default async function Home() {
@@ -15,6 +16,7 @@ export default async function Home() {
       <MainDishes data={MainData} />
       <FavDishes data={FavData} />
       <Collection data={CollectionData} />
+      <SearchDrawer />
     </main>
   );
 }
