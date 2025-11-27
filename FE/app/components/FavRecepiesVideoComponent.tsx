@@ -2,6 +2,13 @@
 import { useRef } from "react";
 import { StrapiVideo } from "../lib/strapi-video";
 import { FavData } from "../types";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "./ui/carousel";
 
 function FavRecepiesVideoComponent({ data }: { data: FavData }) {
   const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
@@ -22,41 +29,46 @@ function FavRecepiesVideoComponent({ data }: { data: FavData }) {
   };
 
   return (
-    <div className="flex md:max-w-6xl mx-auto lg:px-0">
-      {data.favComponents.map((component, index) => (
-        <div
-          key={component.id}
-          className="min-w-[260px] max-w-[260px] pt-5 shrink-0 p-2 cursor-pointer"
-          onMouseEnter={() => handleMouseEnter(index)}
-          onMouseLeave={() => handleMouseLeave(index)}
-        >
-          {/* IMAGE WRAPPER */}
-          <div className="relative rounded-xl border overflow-hidden shadow-md group">
-            <StrapiVideo
-              ref={(el) => {
-                videoRefs.current[index] = el;
-              }}
-              src={component.Image.url}
-              className="w-full h-80 object-cover transition-transform duration-300 group-hover:scale-105"
-              loop={true}
-              muted={true}
-            />
+    <Carousel className="w-full max-w-6xl mx-auto lg:px-0">
+      <CarouselContent>
+        {data.favComponents.map((component, index) => (
+          <CarouselItem
+            key={component.id}
+            className=" max-w-[260px] pt-5 shrink-0 p-2 cursor-pointer"
+            onMouseEnter={() => handleMouseEnter(index)}
+            onMouseLeave={() => handleMouseLeave(index)}
+          >
+            {/* IMAGE WRAPPER */}
+            <div className="relative rounded-xl border overflow-hidden shadow-md group">
+              <StrapiVideo
+                ref={(el) => {
+                  videoRefs.current[index] = el;
+                }}
+                src={component.Image.url}
+                className="w-full h-80 object-cover transition-transform duration-300 group-hover:scale-105"
+                loop={true}
+                muted={true}
+              />
 
-            {/* PLAY ICON */}
-            <div className="absolute inset-0 flex items-center justify-center group-hover:hidden">
-              <button className="bg-black/40 rounded-full px-3 py-1 text-white text-xs uppercase tracking-wide">
-                Play
-              </button>
+              {/* PLAY ICON */}
+              <div className="absolute inset-0 flex items-center justify-center group-hover:hidden">
+                <button className="bg-black/40 rounded-full px-3 py-1 text-white text-xs uppercase tracking-wide">
+                  Play
+                </button>
+              </div>
             </div>
-          </div>
 
-          {/* TITLE */}
-          <h3 className="font-semibold mt-3 text-center text-lg font-domaine">
-            {component.title}
-          </h3>
-        </div>
-      ))}
-    </div>
+            {/* TITLE */}
+            <h3 className="font-semibold mt-3 text-center text-lg font-domaine">
+              {component.title}
+            </h3>
+          </CarouselItem>
+        ))}
+      </CarouselContent>
+
+      <CarouselPrevious className="hidden lg:flex" />
+      <CarouselNext className="hidden lg:flex" />
+    </Carousel>
   );
 }
 

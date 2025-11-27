@@ -56,7 +56,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${domaineDisplay.variable} ${dramaDisplay.variable}  ${robotoSlab.variable} md:bg-gray-100 antialiased w-full`}
+        className={`${geistSans.variable} ${geistMono.variable} ${domaineDisplay.variable} ${dramaDisplay.variable}  ${robotoSlab.variable} overflow-x-hidden md:bg-gray-100 antialiased w-full`}
       >
         <Header />
         {children}

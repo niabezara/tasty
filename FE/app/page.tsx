@@ -11,7 +11,7 @@ export default async function Home() {
   ]);
 
   return (
-    <main className="flex items-center text-center flex-col  md:max-w-6xl mx-auto">
+    <main className="flex items-center gap-10 text-center flex-col  md:max-w-6xl mx-auto">
       <MainDishes data={MainData} />
       <FavDishes data={FavData} />
       <Collection data={CollectionData} />
