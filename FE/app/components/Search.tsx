@@ -3,8 +3,14 @@
 import { Input } from "@/app/components/ui/input";
 import { useState } from "react";
 import { Drawer, DrawerContent, DrawerTitle } from "./ui/drawer";
+import Categories from "./Categories";
+import { CategoriesResponse } from "../types/CategoryTypes";
 
-export function SearchDrawer() {
+interface SearchDrawerProps {
+  data: CategoriesResponse;
+}
+
+export function SearchDrawer({ data }: SearchDrawerProps) {
   const [open, setOpen] = useState(false);
 
   return (
@@ -21,10 +27,14 @@ export function SearchDrawer() {
       </span>
       <Drawer open={open} onOpenChange={setOpen}>
         <DrawerContent className="h-[90vh]">
-          <DrawerTitle>Search Recipes</DrawerTitle>
+          <DrawerTitle></DrawerTitle>
           <div className="px-4">
-            <Input placeholder="Type to search..." autoFocus />
-            {/* results here  aq ukkve resultati da collectionebi*/}
+            <Input
+              placeholder="Search for a recipe"
+              autoFocus
+              className="rounded-xl"
+            />
+            <Categories Categorydata={data.data} />
           </div>
         </DrawerContent>
       </Drawer>
