@@ -1,3 +1,4 @@
+import React, { useMemo } from "react";
 import { StrapiImage } from "../lib/strapi-image";
 import { Category } from "../types/CategoryTypes";
 import { Icons } from "./Icons";
@@ -14,7 +15,23 @@ interface CategoriesProps {
 }
 
 function Categories({ Categorydata }: CategoriesProps) {
-  console.log("Categories response:", Categorydata);
+  const [searchQuery, setSearchQuery] = React.useState("");
+
+  const filteredCategories = useMemo(() => {
+    if (!searchQuery.trim()) {
+      return Categorydata;
+    }
+
+    const query = searchQuery.toLowerCase();
+
+    return Categorydata.map((category) => ({
+      ...category,
+      recipes: category.recipes.filter((recipe) =>
+        recipe.title.toLowerCase().includes(query)
+      ),
+    })).filter((category) => category.recipes.length > 0);
+  }, [Categorydata, searchQuery]);
+
   return (
     <div className="flex flex-col  gap-6">
       {Categorydata.map((category) => (
