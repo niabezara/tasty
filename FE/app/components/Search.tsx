@@ -28,7 +28,7 @@ export function SearchDrawer({ data }: SearchDrawerProps) {
       <Drawer open={open} onOpenChange={setOpen}>
         <DrawerContent className="h-[90vh]">
           <DrawerTitle></DrawerTitle>
-          <div className="px-4">
+          <div className="px-4 pb-[200px] w-full mx-auto max-w-[1200px]">
             <Input
               placeholder="Search for a recipe"
               autoFocus
