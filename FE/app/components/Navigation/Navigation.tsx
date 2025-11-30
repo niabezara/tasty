@@ -1,8 +1,9 @@
 "use client";
-import { cn } from "@/app/lib/utils";
+
 import Hamburger from "hamburger-react";
 import { useState } from "react";
 import NavigationLink from "./NavigationLinks";
+import { cn } from "@/app/lib/utils";
 
 const HeaderData = [
   { name: "Home", link: "/" },

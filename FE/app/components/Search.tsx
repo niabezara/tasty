@@ -5,6 +5,7 @@ import { useState } from "react";
 import { Drawer, DrawerContent, DrawerTitle } from "./ui/drawer";
 import Categories from "./Categories";
 import { CategoriesResponse } from "../types/CategoryTypes";
+import { useSearchStore } from "../store/useSearchStore";
 
 interface SearchDrawerProps {
   data: CategoriesResponse;
@@ -12,6 +13,14 @@ interface SearchDrawerProps {
 
 export function SearchDrawer({ data }: SearchDrawerProps) {
   const [open, setOpen] = useState(false);
+  const { query, setQuery, clearQuery } = useSearchStore();
+
+  const handleDrawerChange = (isOpen: boolean) => {
+    setOpen(isOpen);
+    if (!isOpen) {
+      clearQuery(); // Clear search when drawer closes
+    }
+  };
 
   return (
     <div className="flex w-full mb-4 items-center justify-center mx-auto max-w-3xl">
@@ -25,7 +34,7 @@ export function SearchDrawer({ data }: SearchDrawerProps) {
       <span className="hidden md:block mx-4 text-gray-600 -mt-2 font-drama text-7xl leading-none lowercase tracking-normal">
         or
       </span>
-      <Drawer open={open} onOpenChange={setOpen}>
+      <Drawer open={open} onOpenChange={handleDrawerChange}>
         <DrawerContent className="h-[90vh]">
           <DrawerTitle></DrawerTitle>
           <div className="px-4 pb-[200px] w-full mx-auto max-w-[1200px]">
@@ -33,6 +42,8 @@ export function SearchDrawer({ data }: SearchDrawerProps) {
               placeholder="Search for a recipe"
               autoFocus
               className="rounded-xl"
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
             />
             <Categories Categorydata={data.data} />
           </div>

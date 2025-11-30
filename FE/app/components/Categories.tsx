@@ -1,4 +1,4 @@
-import React, { useMemo } from "react";
+import { useMemo } from "react";
 import { StrapiImage } from "../lib/strapi-image";
 import { Category } from "../types/CategoryTypes";
 import { Icons } from "./Icons";
@@ -9,65 +9,75 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "./ui/carousel";
+import { useSearchStore } from "../store/useSearchStore";
 
 interface CategoriesProps {
   Categorydata: Category[];
 }
 
 function Categories({ Categorydata }: CategoriesProps) {
-  const [searchQuery, setSearchQuery] = React.useState("");
+  const query = useSearchStore((state) => state.query);
 
+  // Filter categories and recipes based on search query
   const filteredCategories = useMemo(() => {
-    if (!searchQuery.trim()) {
+    if (!query.trim()) {
       return Categorydata;
     }
 
-    const query = searchQuery.toLowerCase();
+    const searchTerm = query.toLowerCase();
 
     return Categorydata.map((category) => ({
       ...category,
       recipes: category.recipes.filter((recipe) =>
-        recipe.title.toLowerCase().includes(query)
+        recipe.title.toLowerCase().includes(searchTerm)
       ),
     })).filter((category) => category.recipes.length > 0);
-  }, [Categorydata, searchQuery]);
+  }, [Categorydata, query]);
 
   return (
-    <div className="flex flex-col  gap-6">
-      {Categorydata.map((category) => (
-        <div key={category.id} className="">
-          <h2 className="flex py-3 font-medium leading-8 text-[16px] uppercase">
-            {category.name}
-          </h2>
-          <Carousel className="flex w-full gap-5">
-            <CarouselContent className="w-full">
-              {category.recipes.map((recipe) => (
-                <CarouselItem
-                  key={recipe.id}
-                  className="relative basis-auto flex gap-2 flex-col-reverse"
-                >
-                  <h3 className="text-[14px]">{recipe.title}</h3>
-                  <StrapiImage
-                    className="w-[150px] h-[150px] relative object-cover rounded-md "
-                    src={recipe?.thumbnail?.url || ""}
-                    alt={
-                      recipe?.thumbnail?.alternativeText ||
-                      "Main Component Image"
-                    }
-                    height={recipe.thumbnail.height}
-                    width={recipe.thumbnail.width}
-                  />
-                  <div className="absolute bg-white flex items-center w-[65px] rounded-tl-[20px] h-[33px] right-0 bottom-7 p-2.5">
-                    <Icons.Heart width={24} height={24} color="#734060" />
-                  </div>
-                </CarouselItem>
-              ))}
-            </CarouselContent>
-            <CarouselPrevious className="hidden md:flex md:absolute md:-left-4 bg-[#734060] text-white hover:bg-[#734060] hover:text-white border-none" />
-            <CarouselNext className="hidden md:flex md:absolute md:-right-4 bg-[#734060] text-white hover:bg-[#734060] hover:text-white border-none" />
-          </Carousel>
+    <div className="flex flex-col gap-6">
+      {/* Categories and Recipes */}
+      {filteredCategories.length > 0 ? (
+        filteredCategories.map((category) => (
+          <div key={category.id}>
+            <h2 className="flex py-3 font-medium leading-8 text-[16px] uppercase">
+              {category.name}
+            </h2>
+            <Carousel className="flex w-full gap-5">
+              <CarouselContent className="w-full">
+                {category.recipes.map((recipe) => (
+                  <CarouselItem
+                    key={recipe.id}
+                    className="relative basis-auto flex gap-2 flex-col-reverse"
+                  >
+                    <h3 className="text-[14px]">{recipe.title}</h3>
+                    <StrapiImage
+                      className="w-[150px] h-[150px] relative object-cover rounded-md"
+                      src={recipe?.thumbnail?.url || ""}
+                      alt={
+                        recipe?.thumbnail?.alternativeText ||
+                        "Main Component Image"
+                      }
+                      height={recipe.thumbnail.height}
+                      width={recipe.thumbnail.width}
+                    />
+                    <div className="absolute bg-white flex items-center w-[65px] rounded-tl-[20px] h-[33px] right-0 bottom-7 p-2.5">
+                      <Icons.Heart width={24} height={24} color="#734060" />
+                    </div>
+                  </CarouselItem>
+                ))}
+              </CarouselContent>
+              <CarouselPrevious className="hidden md:flex md:absolute md:-left-4 bg-[#734060] text-white hover:bg-[#734060] hover:text-white border-none" />
+              <CarouselNext className="hidden md:flex md:absolute md:-right-4 bg-[#734060] text-white hover:bg-[#734060] hover:text-white border-none" />
+            </Carousel>
+          </div>
+        ))
+      ) : (
+        <div className="text-center py-12 text-gray-500">
+          <p className="text-lg">{`No recipes found matching "${query}"`}</p>
+          <p className="text-sm mt-2">Try a different search term</p>
         </div>
-      ))}
+      )}
     </div>
   );
 }
