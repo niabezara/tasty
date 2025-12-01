@@ -1,24 +1,24 @@
-// ---------- MAIN CATEGORY TYPES ---------- //
-export interface MainCategoryResponse {
-  data: MainCategoryData;
-  meta: Record<string, unknown>;
-}
-export interface MainCategoryData {
-  id: number;
-  documentId: string;
-  createdAt: string;
-  updatedAt: string;
-  publishedAt: string | null;
-  MainComponents: MainComponent[];
+// =====================
+// Image & Formats
+// =====================
+
+export interface ImageFormat {
+  ext: string;
+  url: string;
+  hash: string;
+  mime: string;
+  name: string;
+  path: string | null;
+  size: number;
+  width: number;
+  height: number;
+  sizeInBytes: number;
 }
 
-export interface MainComponent {
-  id: number;
-  title: string;
-  Image: StrapiImage;
+export interface ImageFormats {
+  thumbnail?: ImageFormat;
+  [key: string]: ImageFormat | undefined;
 }
-
-// ---------- IMAGE TYPES ---------- //
 
 export interface StrapiImage {
   id: number;
@@ -36,95 +36,79 @@ export interface StrapiImage {
   url: string;
   previewUrl: string | null;
   provider: string;
-  provider_metadata: string | null;
-  createdAt: string;
-  updatedAt: string;
-  publishedAt: string | null;
-}
-
-export interface ImageFormats {
-  small?: ImageFormat;
-  medium?: ImageFormat;
-  thumbnail?: ImageFormat;
-}
-
-export interface ImageFormat {
-  ext: string;
-  url: string;
-  hash: string;
-  mime: string;
-  name: string;
-  path: string | null;
-  size: number;
-  width: number;
-  height: number;
-  sizeInBytes: number;
-}
-
-// ---------- VIDEO TYPES ---------- //
-
-export interface FavResponse {
-  data: FavData;
-  meta: Record<string, unknown>;
-}
-
-export interface FavData {
-  id: number;
-  documentId: string;
-  createdAt: string;
-  updatedAt: string;
-  publishedAt: string | null;
-  favComponents: FavComponent[];
-}
-
-// ---------- COMPONENT ---------- //
-
-export interface FavComponent {
-  id: number;
-  title: string;
-  Image: StrapiMedia;
-}
-
-// ---------- STRAPI MEDIA TYPE ---------- //
-
-export interface StrapiMedia {
-  id: number;
-  documentId: string;
-  name: string;
-  alternativeText: string | null;
-  caption: string | null;
-  width: number | null;
-  height: number | null;
-  formats: StrapiImageFormats | null;
-  hash: string;
-  ext: string;
-  mime: string;
-  size: number;
-  url: string;
-  previewUrl: string | null;
-  provider: string;
   provider_metadata: unknown | null;
   createdAt: string;
   updatedAt: string;
   publishedAt: string | null;
 }
 
-// ---------- OPTIONAL IMAGE FORMATS ---------- //
-export interface StrapiImageFormats {
-  thumbnail?: StrapiImageFormat;
-  small?: StrapiImageFormat;
-  medium?: StrapiImageFormat;
-  large?: StrapiImageFormat;
+// =====================
+// Recipe Description (Rich Text)
+// =====================
+
+export interface RichTextChild {
+  text: string;
+  type: string;
 }
 
-export interface StrapiImageFormat {
+export interface RichTextBlock {
+  type: string;
+  children: RichTextChild[];
+}
+
+// =====================
+// Recipe
+// =====================
+
+export interface Recipe {
+  id: number;
+  documentId: string;
+  createdAt: string;
+  updatedAt: string;
+  publishedAt: string | null;
   name: string;
-  hash: string;
-  ext: string;
-  mime: string;
-  path: string | null;
-  width: number;
-  height: number;
-  size: number;
-  url: string;
+  slug: string | null;
+  description: RichTextBlock[];
+  cookTime: number | null;
+  image: StrapiImage[];
+}
+
+// =====================
+// Sub Collection
+// =====================
+
+export interface SubCollection {
+  id: number;
+  documentId: string;
+  createdAt: string;
+  updatedAt: string;
+  publishedAt: string | null;
+  subTitle: string;
+  thumbnail: StrapiImage[];
+  recipe: Recipe;
+}
+
+// =====================
+// Category
+// =====================
+
+export interface Category {
+  id: number;
+  documentId: string;
+  createdAt: string;
+  updatedAt: string;
+  publishedAt: string | null;
+  title: string;
+  slug: string | null;
+  thumbnail: StrapiImage[];
+  sub_collections: SubCollection[];
+}
+
+// =====================
+// API Response
+// =====================
+
+export interface CategoryResponse {
+  data: Category[];
+  meta: unknown;
 }

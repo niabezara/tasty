@@ -4,11 +4,12 @@ import { Input } from "@/app/components/ui/input";
 import { useState } from "react";
 import { Drawer, DrawerContent, DrawerTitle } from "./ui/drawer";
 import Categories from "./Categories";
-import { CategoriesResponse } from "../types/CategoryTypes";
+
 import { useSearchStore } from "../store/useSearchStore";
+import { CategoryResponse } from "../types";
 
 interface SearchDrawerProps {
-  data: CategoriesResponse;
+  data: CategoryResponse;
 }
 
 export function SearchDrawer({ data }: SearchDrawerProps) {

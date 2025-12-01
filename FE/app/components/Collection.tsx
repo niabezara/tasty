@@ -1,8 +1,8 @@
-import { MainCategoryResponse } from "../types";
+import { CategoryResponse } from "../types";
 import Card from "./Card";
 import { ScrollArea, ScrollBar } from "@/app/components/ui/scroll-area";
 
-function Collection({ data }: { data: MainCategoryResponse }) {
+function Collection({ data }: { data: CategoryResponse }) {
   return (
     <ScrollArea className="w-full whitespace-nowrap">
       <div className="flex gap-6 py-4 w-max">

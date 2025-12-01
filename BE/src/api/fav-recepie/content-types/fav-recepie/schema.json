@@ -1,0 +1,20 @@
+{
+  "kind": "singleType",
+  "collectionName": "fav_recepies",
+  "info": {
+    "singularName": "fav-recepie",
+    "pluralName": "fav-recepies",
+    "displayName": "FavRecepie"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "videoRecepie": {
+      "type": "component",
+      "component": "fav-dishes.video-component",
+      "repeatable": true
+    }
+  }
+}

@@ -1,6 +1,6 @@
 import { useMemo } from "react";
 import { StrapiImage } from "../lib/strapi-image";
-import { Category } from "../types/CategoryTypes";
+
 import { Icons } from "./Icons";
 import {
   Carousel,
@@ -10,6 +10,7 @@ import {
   CarouselPrevious,
 } from "./ui/carousel";
 import { useSearchStore } from "../store/useSearchStore";
+import { Category } from "../types";
 
 interface CategoriesProps {
   Categorydata: Category[];
@@ -28,8 +29,8 @@ function Categories({ Categorydata }: CategoriesProps) {
 
     return Categorydata.map((category) => ({
       ...category,
-      recipes: category.recipes.filter((recipe) =>
-        recipe.title.toLowerCase().includes(searchTerm)
+      recipes: category.sub_collections.filter((collection) =>
+        collection.subTitle.toLowerCase().includes(searchTerm)
       ),
     })).filter((category) => category.recipes.length > 0);
   }, [Categorydata, query]);
@@ -41,25 +42,25 @@ function Categories({ Categorydata }: CategoriesProps) {
         filteredCategories.map((category) => (
           <div key={category.id}>
             <h2 className="flex py-3 font-medium leading-8 text-[16px] uppercase">
-              {category.name}
+              {category.title}
             </h2>
             <Carousel className="flex w-full gap-5">
               <CarouselContent className="w-full">
-                {category.recipes.map((recipe) => (
+                {category?.sub_collections.map((collection) => (
                   <CarouselItem
-                    key={recipe.id}
+                    key={collection.id}
                     className="relative basis-auto flex gap-2 flex-col-reverse"
                   >
-                    <h3 className="text-[14px]">{recipe.title}</h3>
+                    <h3 className="text-[14px]">{collection.subTitle}</h3>
                     <StrapiImage
                       className="w-[150px] h-[150px] relative object-cover rounded-md"
-                      src={recipe?.thumbnail?.url || ""}
+                      src={collection?.thumbnail[0]?.url || ""}
                       alt={
-                        recipe?.thumbnail?.alternativeText ||
+                        collection?.thumbnail[0]?.alternativeText ||
                         "Main Component Image"
                       }
-                      height={recipe.thumbnail.height}
-                      width={recipe.thumbnail.width}
+                      height={collection.thumbnail[0].height}
+                      width={collection.thumbnail[0].width}
                     />
                     <div className="absolute bg-white flex items-center w-[65px] rounded-tl-[20px] h-[33px] right-0 bottom-7 p-2.5">
                       <Icons.Heart width={24} height={24} color="#734060" />

@@ -1,0 +1,23 @@
+{
+  "collectionName": "components_fav_dishes_video_components",
+  "info": {
+    "displayName": "VideoComponent"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "video": {
+      "type": "media",
+      "multiple": true,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    }
+  },
+  "config": {}
+}

@@ -1,9 +1,14 @@
 import Link from "next/link";
 import { StrapiImage } from "../lib/strapi-image";
-import { MainCategoryData } from "../types";
 import { cn } from "../lib/utils";
+import { Category } from "../types";
 
-function Card({ data, type }: { data: MainCategoryData; type: string }) {
+type CardProps = {
+  data: Category[];
+  type: "Main" | "Collection";
+};
+
+function Card({ data, type }: CardProps) {
   return (
     <div
       className={cn(
@@ -12,24 +17,24 @@ function Card({ data, type }: { data: MainCategoryData; type: string }) {
           : "flex gap-6 py-4 "
       )}
     >
-      {data?.MainComponents?.map((component) => (
-        <article key={component.id} className={cn(type === "Main" ? "" : "")}>
+      {data?.map((component) => (
+        <article key={component?.id} className={cn(type === "Main" ? "" : "")}>
           <Link
-            href=""
+            href={`/category/${component?.documentId || component.id}`}
             className={cn(
               type === "Main"
-                ? "relative md:hover:opacity-60 flex items-center flex-col h-full"
+                ? "relative  md:hover:opacity-60 flex items-center flex-col h-full"
                 : "flex flex-col-reverse gap-2 w-20 md:w-24 shrink-0 text-center"
             )}
           >
             <p
               className={cn(
                 type === "Main"
-                  ? "absolute -bottom-4 bg-yellow-500/90 px-2 sm:px-6 py-2 mx-auto text-white text-xxs sm:text-xs font-bold uppercase"
+                  ? "absolute -bottom-4 bg-yellow-500/90 px-2 sm:px-6 py-2 mx-auto text-white! text-xxs sm:text-xs font-bold uppercase"
                   : "font-sans text-sm font-bold text-black leading-tight"
               )}
             >
-              {component.title}
+              {component?.title}
             </p>
             <StrapiImage
               className={cn(
@@ -37,10 +42,13 @@ function Card({ data, type }: { data: MainCategoryData; type: string }) {
                   ? ""
                   : "rounded-full w-20 md:w-24 h-20 md:h-24 object-cover"
               )}
-              src={component.Image.url}
-              alt={component?.Image?.alternativeText || "Main Component Image"}
-              height={component.Image.height}
-              width={component.Image.width}
+              src={component?.thumbnail[0]?.url}
+              alt={
+                component?.thumbnail[0]?.alternativeText ||
+                "Main Component Image"
+              }
+              height={component?.thumbnail[0]?.height}
+              width={component?.thumbnail[0]?.width}
             />
           </Link>
         </article>

@@ -1,7 +1,7 @@
-import { MainCategoryResponse } from "../types";
+import { CategoryResponse } from "../types";
 import Card from "./Card";
 
-function MainDishes({ data }: { data: MainCategoryResponse }) {
+function MainDishes({ data }: { data: CategoryResponse }) {
   return (
     <div className="pt-8">
       <div className="flex justify-center text-center mb-2 md:mb-3">

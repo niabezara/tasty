@@ -1,7 +1,7 @@
 "use client";
 import { useRef } from "react";
 import { StrapiVideo } from "../lib/strapi-video";
-import { FavData } from "../types";
+
 import {
   Carousel,
   CarouselContent,
@@ -9,8 +9,9 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "./ui/carousel";
+import { VideoRecipeItem } from "../types/FavVideoTypes";
 
-function FavRecepiesVideoComponent({ data }: { data: FavData }) {
+function FavRecepiesVideoComponent({ data }: { data: VideoRecipeItem[] }) {
   const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
 
   const handleMouseEnter = (index: number) => {
@@ -31,7 +32,7 @@ function FavRecepiesVideoComponent({ data }: { data: FavData }) {
   return (
     <Carousel className="w-full max-w-6xl mx-auto lg:px-0">
       <CarouselContent>
-        {data.favComponents.map((component, index) => (
+        {data?.map((component, index) => (
           <CarouselItem
             key={component.id}
             className=" max-w-[260px] pt-5 shrink-0 p-2 cursor-pointer"
@@ -39,12 +40,12 @@ function FavRecepiesVideoComponent({ data }: { data: FavData }) {
             onMouseLeave={() => handleMouseLeave(index)}
           >
             {/* IMAGE WRAPPER */}
-            <div className="relative rounded-xl border overflow-hidden shadow-md group">
+            <div className="relative  rounded-xl border border-black overflow-hidden shadow-md group">
               <StrapiVideo
                 ref={(el) => {
                   videoRefs.current[index] = el;
                 }}
-                src={component.Image.url}
+                src={component?.video[0]?.url}
                 className="w-full h-80 object-cover transition-transform duration-300 group-hover:scale-105"
                 loop={true}
                 muted={true}
