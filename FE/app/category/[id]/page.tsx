@@ -1,5 +1,4 @@
 import { getStrapiData } from "@/app/data-access/getStrapiData";
-import Card from "@/app/components/Card";
 import CategoryCarousel from "@/app/components/CategoryCarousel";
 
 interface PageProps {

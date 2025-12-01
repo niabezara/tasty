@@ -1,4 +1,3 @@
-import { h1 } from "framer-motion/client";
 import { StrapiImage } from "../lib/strapi-image";
 import { SubCollection } from "../types";
 import { Fragment } from "react/jsx-runtime";

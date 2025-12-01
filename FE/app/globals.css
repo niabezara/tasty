@@ -134,3 +134,33 @@ body {
     @apply bg-background text-foreground;
   }
 }
+
+.video-play-overlay {
+  position: relative;
+}
+
+.video-play-overlay::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 30px;
+  height: 30px;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background-color: rgba(0, 0, 0, 0.6);
+
+  background-image: url("/download.svg");
+  background-repeat: no-repeat;
+  background-position: 52% 50%;
+  background-size: 34%;
+
+  pointer-events: none;
+  z-index: 10;
+  opacity: 1;
+  transition: opacity 0.2s ease;
+}
+
+.video-play-overlay:hover::before {
+  opacity: 0;
+}

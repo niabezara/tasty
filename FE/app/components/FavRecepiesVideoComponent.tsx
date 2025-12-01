@@ -35,12 +35,16 @@ function FavRecepiesVideoComponent({ data }: { data: VideoRecipeItem[] }) {
         {data?.map((component, index) => (
           <CarouselItem
             key={component.id}
-            className=" max-w-[260px] pt-5 shrink-0 p-2 cursor-pointer"
+            className=" max-w-[230px] pt-5 shrink-0 p-2 cursor-pointer"
             onMouseEnter={() => handleMouseEnter(index)}
             onMouseLeave={() => handleMouseLeave(index)}
           >
             {/* IMAGE WRAPPER */}
-            <div className="relative  rounded-xl border border-black overflow-hidden shadow-md group">
+            <div
+              className=" rounded-xl border video-play-overlay border-black overflow-hidden shadow-md group relative group
+
+  "
+            >
               <StrapiVideo
                 ref={(el) => {
                   videoRefs.current[index] = el;
@@ -52,11 +56,11 @@ function FavRecepiesVideoComponent({ data }: { data: VideoRecipeItem[] }) {
               />
 
               {/* PLAY ICON */}
-              <div className="absolute inset-0 flex items-center justify-center group-hover:hidden">
+              {/* <div className="absolute inset-0 flex items-center justify-center group-hover:hidden">
                 <button className="bg-black/40 rounded-full px-3 py-1 text-white text-xs uppercase tracking-wide">
                   Play
                 </button>
-              </div>
+              </div> */}
             </div>
 
             {/* TITLE */}
@@ -67,8 +71,8 @@ function FavRecepiesVideoComponent({ data }: { data: VideoRecipeItem[] }) {
         ))}
       </CarouselContent>
 
-      <CarouselPrevious className="hidden lg:flex" />
-      <CarouselNext className="hidden lg:flex" />
+      <CarouselPrevious className="hidden lg:flex left-[-15px]" />
+      <CarouselNext className="hidden lg:flex right-[-15px]" />
     </Carousel>
   );
 }
