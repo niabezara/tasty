@@ -18,7 +18,7 @@ export default async function Home() {
       <FavDishes data={FavDishesData} />
       <Collection data={CategoriesData} />
       <SearchDrawer data={CategoriesData} />
-      <Blog data={BlogData.data} />
+      <Blog data={BlogData.data} Category={CategoriesData} />
     </main>
   );
 }

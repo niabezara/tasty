@@ -164,3 +164,24 @@ body {
 .video-play-overlay:hover::before {
   opacity: 0;
 }
+
+@layer components {
+  .counter-reset {
+    counter-reset: li;
+  }
+  .sidebar-collect::before {
+    content: counter(li);
+    counter-increment: li;
+    background-color: rgb(115 64 96);
+    color: rgb(255 255 255);
+    width: 16px;
+    height: 16px;
+    line-height: 16px;
+    border-radius: 9999px;
+    position: absolute;
+    text-align: center;
+    left: 15px;
+    top: 20px;
+    font-size: 10px;
+  }
+}
