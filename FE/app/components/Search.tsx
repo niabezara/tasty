@@ -36,7 +36,7 @@ export function SearchDrawer({ data }: SearchDrawerProps) {
         or
       </span>
       <Drawer open={open} onOpenChange={handleDrawerChange}>
-        <DrawerContent className="h-[90vh]">
+        <DrawerContent className="h-[90vh] overflow-x-auto">
           <DrawerTitle></DrawerTitle>
           <div className="px-4 pb-[200px] w-full mx-auto max-w-[1200px]">
             <Input
