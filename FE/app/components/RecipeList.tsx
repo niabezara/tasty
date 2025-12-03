@@ -1,12 +1,13 @@
 import Link from "next/link";
 import { Category } from "../types";
+import { Fragment } from "react/jsx-runtime";
 
 function RecipeList({ data }: { data: Category[] }) {
   return (
     <section>
       <div className="py-8 px-4 mx-auto md:max-w-5xl recipe-lists">
         {data.map((category) => (
-          <>
+          <Fragment key={category.id}>
             <div className="border-b border-gray-400 pb-2 mb-3">
               <h2 className="text-lg text-black tracking-widest font-arvo uppercase">
                 {category.title}
@@ -25,7 +26,7 @@ function RecipeList({ data }: { data: Category[] }) {
                 </Link>
               </li>
             </ul>
-          </>
+          </Fragment>
         ))}
       </div>
     </section>
