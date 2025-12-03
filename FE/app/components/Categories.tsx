@@ -38,7 +38,7 @@ function Categories({ Categorydata }: CategoriesProps) {
   return (
     <div className="flex flex-col gap-6">
       {/* Categories and Recipes */}
-      {filteredCategories.length > 0 ? (
+      {filteredCategories?.length > 0 ? (
         filteredCategories.map((category) => {
           const showArrows = category.sub_collections.length > 4;
           return (
@@ -56,13 +56,13 @@ function Categories({ Categorydata }: CategoriesProps) {
                       <h3 className="text-[14px]">{collection.subTitle}</h3>
                       <StrapiImage
                         className="w-[150px] h-[150px] relative object-cover rounded-md"
-                        src={collection?.thumbnail[0]?.url || ""}
+                        src={collection?.thumbnail?.[0]?.url || ""}
                         alt={
-                          collection?.thumbnail[0]?.alternativeText ||
+                          collection?.thumbnail?.[0]?.alternativeText ||
                           "Main Component Image"
                         }
-                        height={collection.thumbnail[0].height}
-                        width={collection.thumbnail[0].width}
+                        height={collection.thumbnail?.[0]?.height}
+                        width={collection.thumbnail?.[0]?.width}
                       />
                       <div className="absolute bg-white flex items-center w-[65px] rounded-tl-[20px] h-[33px] right-0 bottom-7 p-2.5">
                         <Icons.Heart width={24} height={24} color="#734060" />

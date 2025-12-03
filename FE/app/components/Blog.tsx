@@ -17,7 +17,7 @@ function Blog({
           <p className="flex items-start mb-4 text-kinda-sm text-[#734060] tracking-widest uppercase text-center md:text-left">
             The Latest and Greatest
           </p>
-          {data?.slice(0, 3).map((blog) => (
+          {data?.slice(0, 3)?.map((blog) => (
             <article
               key={blog.id}
               className="md:grid grid-cols-3 gap-4 pb-6 pt-4 my-4 md:border-b "
@@ -64,7 +64,7 @@ function Blog({
               Recepie collections{" "}
             </h3>
             <ol className="counter-reset">
-              {Category?.data.map((category) => (
+              {Category?.data?.map((category) => (
                 <li
                   key={category.id}
                   className="block relative sidebar-collect py-4 pl-12 pr-8 border-b-2 border-white md:hover:opacity-60 "

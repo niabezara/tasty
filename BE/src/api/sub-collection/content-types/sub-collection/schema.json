@@ -30,9 +30,9 @@
         "audios"
       ]
     },
-    "recipe": {
+    "recipes": {
       "type": "relation",
-      "relation": "manyToOne",
+      "relation": "manyToMany",
       "target": "api::recipe.recipe",
       "inversedBy": "sub_collections"
     }

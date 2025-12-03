@@ -588,7 +588,7 @@ export interface ApiRecipeRecipe extends Struct.CollectionTypeSchema {
     publishedAt: Schema.Attribute.DateTime;
     slug: Schema.Attribute.UID;
     sub_collections: Schema.Attribute.Relation<
-      'oneToMany',
+      'manyToMany',
       'api::sub-collection.sub-collection'
     >;
     updatedAt: Schema.Attribute.DateTime;
@@ -620,7 +620,7 @@ export interface ApiSubCollectionSubCollection
     > &
       Schema.Attribute.Private;
     publishedAt: Schema.Attribute.DateTime;
-    recipe: Schema.Attribute.Relation<'manyToOne', 'api::recipe.recipe'>;
+    recipes: Schema.Attribute.Relation<'manyToMany', 'api::recipe.recipe'>;
     subTitle: Schema.Attribute.String;
     thumbnail: Schema.Attribute.Media<
       'images' | 'files' | 'videos' | 'audios',

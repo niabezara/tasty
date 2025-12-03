@@ -19,7 +19,7 @@ export default factories.createCoreController(
             sub_collections: {
               populate: {
                 thumbnail: true,
-                recipe: {
+                recipes: {
                   populate: {
                     image: true,
                   },

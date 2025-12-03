@@ -15,7 +15,7 @@ function MainDishes({ data }: { data: CategoryResponse }) {
         </h1>
       </div>
       <div className=" md:pt-6 md:pb-8 lg:pt-8 lg:pb-10">
-        <Card data={data.data.slice(0, 4)} type="Main" />
+        <Card data={data?.data?.slice(0, 4)} type="Main" />
       </div>
     </section>
   );

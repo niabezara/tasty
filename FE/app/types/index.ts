@@ -85,7 +85,7 @@ export interface SubCollection {
   publishedAt: string | null;
   subTitle: string;
   thumbnail: StrapiImage[];
-  recipe: Recipe;
+  recipes: Recipe[];
 }
 
 // =====================

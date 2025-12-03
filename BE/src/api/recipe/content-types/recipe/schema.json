@@ -35,9 +35,9 @@
     },
     "sub_collections": {
       "type": "relation",
-      "relation": "oneToMany",
+      "relation": "manyToMany",
       "target": "api::sub-collection.sub-collection",
-      "mappedBy": "recipe"
+      "mappedBy": "recipes"
     }
   }
 }
