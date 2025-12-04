@@ -17,12 +17,7 @@
     "thumbnail": {
       "type": "media",
       "multiple": true,
-      "allowedTypes": [
-        "images",
-        "files",
-        "videos",
-        "audios"
-      ]
+      "allowedTypes": ["images", "files", "videos", "audios"]
     },
     "slug": {
       "type": "uid"
@@ -32,6 +27,9 @@
       "relation": "oneToMany",
       "target": "api::sub-collection.sub-collection",
       "mappedBy": "category"
+    },
+    "categoryDescription": {
+      "type": "richtext"
     }
   }
 }

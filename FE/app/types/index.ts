@@ -100,6 +100,7 @@ export interface Category {
   publishedAt: string | null;
   title: string;
   slug: string | null;
+  categoryDescription: string | null;
   thumbnail: StrapiImage[];
   sub_collections: SubCollection[];
 }
