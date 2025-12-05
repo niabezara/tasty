@@ -10,6 +10,7 @@ function FavDishes({ data }: { data: VideoRecipeResponse }) {
           My Favorite Recipes
         </span>
       </h2>
+
       <FavRecepiesVideoComponent data={data.data.videoRecepie} />
     </section>
   );

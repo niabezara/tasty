@@ -16,7 +16,7 @@ export default factories.createCoreController(
             sub_collections: {
               populate: {
                 thumbnail: true,
-                recipe: {
+                recipes: {
                   populate: {
                     image: true,
                   },
@@ -31,31 +31,27 @@ export default factories.createCoreController(
       return this.transformResponse(sanitized);
     },
 
-    async findOne(ctx) {
-      const { id } = ctx.params;
+    //   async findOne(ctx) {
+    //     const { documentId } = ctx.params;
 
-      const result = await strapi.entityService.findOne(
-        "api::category.category",
-        id,
-        {
-          populate: {
-            thumbnail: true,
-            sub_collections: {
-              populate: {
-                thumbnail: true,
-                recipe: {
-                  populate: {
-                    image: true,
-                  },
-                },
-              },
-            },
-          },
-        }
-      );
+    //     const result = await strapi.db.query("api::category.category").findOne({
+    //       where: { documentId },
+    //       populate: {
+    //         thumbnail: true,
+    //         sub_collections: {
+    //           populate: {
+    //             thumbnail: true,
+    //             recipes: {
+    //               populate: {
+    //                 image: true,
+    //               },
+    //             },
+    //           },
+    //         },
+    //       },
+    //     });
 
-      const sanitized = await this.sanitizeOutput(result, ctx);
-      return this.transformResponse(sanitized);
-    },
+    //     return result;
+    //   },
   })
 );

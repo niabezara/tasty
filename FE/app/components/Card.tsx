@@ -9,6 +9,7 @@ type CardProps = {
 };
 
 function Card({ data, type }: CardProps) {
+  console.log("Card Component Data:", data);
   return (
     <div
       className={cn(
@@ -20,7 +21,7 @@ function Card({ data, type }: CardProps) {
       {data?.map((component) => (
         <article key={component?.id} className={cn(type === "Main" ? "" : "")}>
           <Link
-            href={`/category/${component?.documentId || component.id}`}
+            href={`/categories/${component?.documentId}`}
             className={cn(
               type === "Main"
                 ? "relative  md:hover:opacity-60 flex items-center flex-col h-full"
