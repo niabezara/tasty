@@ -9,7 +9,6 @@ type CardProps = {
 };
 
 function Card({ data, type }: CardProps) {
-  console.log("Card Component Data:", data);
   return (
     <div
       className={cn(

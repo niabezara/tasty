@@ -13,6 +13,11 @@ export default factories.createCoreController(
         {
           populate: {
             thumbnail: true,
+            featuredRecipe: {
+              populate: {
+                image: true,
+              },
+            },
             sub_collections: {
               populate: {
                 thumbnail: true,
@@ -31,27 +36,38 @@ export default factories.createCoreController(
       return this.transformResponse(sanitized);
     },
 
-    //   async findOne(ctx) {
-    //     const { documentId } = ctx.params;
+    async findOne(ctx) {
+      const { id } = ctx.params;
 
-    //     const result = await strapi.db.query("api::category.category").findOne({
-    //       where: { documentId },
-    //       populate: {
-    //         thumbnail: true,
-    //         sub_collections: {
-    //           populate: {
-    //             thumbnail: true,
-    //             recipes: {
-    //               populate: {
-    //                 image: true,
-    //               },
-    //             },
-    //           },
-    //         },
-    //       },
-    //     });
+      try {
+        const result = await strapi
+          .documents("api::category.category")
+          .findOne({
+            documentId: id,
+            populate: {
+              thumbnail: true,
+              featuredRecipe: {
+                populate: {
+                  image: true,
+                },
+              },
+              sub_collections: {
+                populate: {
+                  thumbnail: true,
+                  recipes: {
+                    populate: {
+                      image: true,
+                    },
+                  },
+                },
+              },
+            },
+          });
 
-    //     return result;
-    //   },
+        return result;
+      } catch (error) {
+        ctx.throw(500, `Error fetching category: ${error.message}`);
+      }
+    },
   })
 );

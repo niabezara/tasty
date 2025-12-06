@@ -12,9 +12,7 @@ interface PageProps {
 export default async function CategoryPage({ params }: PageProps) {
   const { documentId } = await params;
 
-  const response = await getStrapiData(
-    `/api/categories/${documentId}?populate=thumbnail`
-  );
+  const response = await getStrapiData(`/api/categories/${documentId}`);
 
   const category = response?.data || response;
   console.log("Category Data:", category);
@@ -39,18 +37,18 @@ export default async function CategoryPage({ params }: PageProps) {
           <div className="col-span-3 col-start-2 lg:col-start-1 flex flex-col items-center md:-mt-12">
             <a href="">
               <StrapiImage
-                src={category.thumbnail[0].url}
+                src={category.featuredRecipe.image[0].url}
                 alt={category?.title || "Category Thumbnail"}
-                width={category.thumbnail[0].width}
-                height={category.thumbnail[0].height}
+                width={category.featuredRecipe.image[0].width}
+                height={category.featuredRecipe.image[0].height}
                 className="rounded-full object-contain w-[183px] h-[183px]"
               />
             </a>
             <div className="poy-category-featured-post text-center font-sans font-semibold tracking-wider text-gray-500 mx-12 mt-4 md:mx-0 md:pb-8 text-xxs md:text-sm">
-              Featured Recipe:{" "}
-              <a className="block" href="">
-                Chicken Wontons in Spicy Chili Sauce
-              </a>
+              Featured Recipe:
+              <Link className="block" href="">
+                {category.featuredRecipe.name}
+              </Link>
             </div>
           </div>
           <div className="cat-desc col-span-8 px-8 pt-4 md:pt-0 pb-12">

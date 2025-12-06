@@ -38,6 +38,12 @@
       "relation": "manyToMany",
       "target": "api::sub-collection.sub-collection",
       "mappedBy": "recipes"
+    },
+    "featuredRecipe": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::category.category",
+      "mappedBy": "featuredRecipe"
     }
   }
 }

@@ -17,7 +17,12 @@
     "thumbnail": {
       "type": "media",
       "multiple": true,
-      "allowedTypes": ["images", "files", "videos", "audios"]
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
     },
     "slug": {
       "type": "uid"
@@ -30,6 +35,12 @@
     },
     "categoryDescription": {
       "type": "richtext"
+    },
+    "featuredRecipe": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::recipe.recipe",
+      "inversedBy": "featuredRecipe"
     }
   }
 }

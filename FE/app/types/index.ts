@@ -102,6 +102,7 @@ export interface Category {
   slug: string | null;
   categoryDescription: string | null;
   thumbnail: StrapiImage[];
+  featuredRecipe: Recipe;
   sub_collections: SubCollection[];
 }
 

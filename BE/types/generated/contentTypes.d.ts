@@ -505,6 +505,7 @@ export interface ApiCategoryCategory extends Struct.CollectionTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    featuredRecipe: Schema.Attribute.Relation<'oneToOne', 'api::recipe.recipe'>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
@@ -575,6 +576,10 @@ export interface ApiRecipeRecipe extends Struct.CollectionTypeSchema {
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     description: Schema.Attribute.Blocks;
+    featuredRecipe: Schema.Attribute.Relation<
+      'oneToOne',
+      'api::category.category'
+    >;
     image: Schema.Attribute.Media<
       'images' | 'files' | 'videos' | 'audios',
       true
