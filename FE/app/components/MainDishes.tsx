@@ -3,18 +3,18 @@ import Card from "./Card";
 
 function MainDishes({ data }: { data: CategoryResponse }) {
   return (
-    <section className="pt-8">
+    <section className="pt-8 w-full ">
       <div className="flex justify-center text-center mb-2 md:mb-3">
-        <h1 className="md:flex md:flex-wrap items-center text-center md:justify-center leading-6 text-black uppercase">
-          <span className="block md:inline md:mr-2 font-bold text-3xl">
+        <h1 className="md:flex  md:flex-wrap pb-6 items-center text-center md:justify-center leading-6 text-black uppercase">
+          <span className="block font-arvo text-sm leading-6 tracking-[0.25em]  md:inline md:mr-2 font-extrabold ">
             Simple recipes made for
-          </span>{" "}
+          </span>
           <span className="block md:inline font-drama text-[#734060] text-3xl font-semibold">
             real, actual, everyday life.
           </span>
         </h1>
       </div>
-      <div className=" md:pt-6 md:pb-8 lg:pt-8 lg:pb-10">
+      <div className="md:bg-gray-100 md:pt-6 md:pb-8 lg:pt-8 lg:pb-10">
         <Card data={data?.data?.slice(0, 4)} type="Main" />
       </div>
     </section>

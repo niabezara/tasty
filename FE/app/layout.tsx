@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Header from "./components/Header";
-import { Roboto_Slab } from "next/font/google";
+import { Roboto_Slab, Arvo } from "next/font/google";
 import Footer from "./components/Footer";
 import localFont from "next/font/local";
 
@@ -11,8 +11,9 @@ const geistSans = Geist({
   subsets: ["latin"],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const arvo = Arvo({
+  variable: "--font-arvo",
+  weight: ["400", "700"],
   subsets: ["latin"],
 });
 
@@ -56,7 +57,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${domaineDisplay.variable} ${dramaDisplay.variable}  ${robotoSlab.variable} overflow-x-hidden md:bg-gray-100 antialiased w-full`}
+        className={`${geistSans.variable} ${domaineDisplay.variable} ${dramaDisplay.variable} ${robotoSlab.variable} ${arvo.variable} overflow-x-hidden antialiased w-full`}
       >
         <Header />
         {children}

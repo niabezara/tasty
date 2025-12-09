@@ -30,7 +30,7 @@ function Card({ data, type }: CardProps) {
             <p
               className={cn(
                 type === "Main"
-                  ? "absolute -bottom-4 bg-yellow-500/90 px-2 sm:px-6 py-2 mx-auto text-white! text-xxs sm:text-xs font-bold uppercase"
+                  ? "absolute -bottom-4 bg-[#F2B955] px-2 sm:px-6 py-2 mx-auto text-white! text-xxs sm:text-xs font-bold uppercase"
                   : "font-sans text-sm font-bold text-black leading-tight"
               )}
             >
