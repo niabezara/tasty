@@ -10,6 +10,7 @@ import {
   CarouselPrevious,
 } from "./ui/carousel";
 import { VideoRecipeItem } from "../types/FavVideoTypes";
+import { Icons } from "./Icons";
 
 function FavRecepiesVideoComponent({ data }: { data: VideoRecipeItem[] }) {
   const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
@@ -31,36 +32,35 @@ function FavRecepiesVideoComponent({ data }: { data: VideoRecipeItem[] }) {
 
   return (
     <Carousel className="w-full max-w-6xl mx-auto lg:px-0">
-      <CarouselContent>
+      <CarouselContent className="">
         {data?.map((component, index) => (
           <CarouselItem
             key={component.id}
-            className=" max-w-[230px] pt-5 shrink-0 p-2 cursor-pointer"
+            className="z-10 max-w-[236px] pt-5 shrink-0 p-2 cursor-pointer"
             onMouseEnter={() => handleMouseEnter(index)}
             onMouseLeave={() => handleMouseLeave(index)}
           >
-            {/* IMAGE WRAPPER */}
-            <div
-              className=" rounded-xl border video-play-overlay border-black overflow-hidden shadow-md group relative group
-
-  "
-            >
-              <StrapiVideo
-                ref={(el) => {
-                  videoRefs.current[index] = el;
-                }}
-                src={component?.video[0]?.url}
-                className="w-full h-80 object-cover transition-transform duration-300 group-hover:scale-105"
-                loop={true}
-                muted={true}
-              />
+            {/* OUTER WRAPPER */}
+            <div className="relative">
+              {/* IMAGE WRAPPER */}
+              <div className="rounded-xl border video-play-overlay border-black overflow-hidden shadow-md group relative">
+                <StrapiVideo
+                  ref={(el) => {
+                    videoRefs.current[index] = el;
+                  }}
+                  src={component?.video[0]?.url}
+                  className="w-full h-80 object-cover transition-transform duration-300 group-hover:scale-105"
+                  loop={true}
+                  muted={true}
+                />
+              </div>
 
               {/* PLAY ICON */}
-              {/* <div className="absolute inset-0 flex items-center justify-center group-hover:hidden">
-                <button className="bg-black/40 rounded-full px-3 py-1 text-white text-xs uppercase tracking-wide">
-                  Play
-                </button>
-              </div> */}
+              <div className="w-full absolute justify-center text-white items-center flex text-center -bottom-2 z-100">
+                <span className="py-2 px-1.5 bg-[#734060] leading-0.5 font-arvo rounded-[10px] text-[10px]">
+                  PLAY
+                </span>
+              </div>
             </div>
 
             {/* TITLE */}
@@ -71,8 +71,12 @@ function FavRecepiesVideoComponent({ data }: { data: VideoRecipeItem[] }) {
         ))}
       </CarouselContent>
 
-      <CarouselPrevious className="hidden lg:flex left-[-15px]" />
-      <CarouselNext className="hidden lg:flex right-[-15px]" />
+      <CarouselPrevious className="hidden lg:flex left-[-15px]">
+        <Icons.arrow />
+      </CarouselPrevious>
+      <CarouselNext className="hidden lg:flex -right-5">
+        <Icons.arrow className="rotate-180" />
+      </CarouselNext>
     </Carousel>
   );
 }
