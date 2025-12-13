@@ -1,4 +1,4 @@
-import { useMemo } from "react";
+import { Fragment, useMemo } from "react";
 import { StrapiImage } from "../lib/strapi-image";
 
 import { Icons } from "./Icons";
@@ -43,15 +43,20 @@ function Categories({ Categorydata }: CategoriesProps) {
           const showArrows = category.sub_collections.length > 4;
           return (
             <div key={category.id}>
-              <h2 className="flex py-3 font-medium leading-8 text-[16px] uppercase">
-                {category.title}
-              </h2>
+              {category.sub_collections.length !== 0 && (
+                <span className="flex gap-2 items-center">
+                  <h2 className="flex font-roboto py-3 text-[#734060] font-medium leading-8 text-[16px] uppercase">
+                    {category.title}
+                  </h2>
+                  <Icons.arrow className="rotate-180 w-3.5 h-3.5 fill-[#734060]" />
+                </span>
+              )}
               <Carousel className="flex w-full gap-5">
                 <CarouselContent className="w-full">
                   {category?.sub_collections.map((collection) => (
                     <CarouselItem
                       key={collection.id}
-                      className="relative basis-auto flex gap-2 flex-col-reverse"
+                      className="relative pl-0 basis-auto flex gap-2 flex-col-reverse"
                     >
                       <h3 className="text-[14px]">{collection.subTitle}</h3>
                       <StrapiImage
