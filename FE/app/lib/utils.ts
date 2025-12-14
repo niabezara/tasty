@@ -42,3 +42,13 @@ export function stripHtmlTags(html: string): string {
   const cleanedText = textWithoutHtml.replace(/&nbsp;/g, " ");
   return cleanedText.replace(/[ \t]+/g, " ").trim();
 }
+
+export function formatDate(date: Date | string): string {
+  const dateObj = typeof date === "string" ? new Date(date) : date;
+
+  return dateObj.toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  });
+}

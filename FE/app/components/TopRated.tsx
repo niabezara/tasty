@@ -3,6 +3,7 @@ import { getStrapiData } from "../data-access/getStrapiData";
 import { StrapiImage } from "../lib/strapi-image";
 import { Category, Recipe, SubCollection } from "../types";
 import RecipeList from "./RecipeList";
+import { Icons } from "./Icons";
 
 async function TopRated() {
   const recipesData = await getStrapiData(`/api/categories?populate=*`);
@@ -16,12 +17,13 @@ async function TopRated() {
   return (
     <div>
       <div className="max-w-xl md:mx-auto text-center">
-        <div className="flex justify-center items-center space-x-2 mb-4">
-          <h2 className="font-sans font-bold tracking-widest text-2xl uppercase text-[#734060] m-0">
+        <div className="flex mt-20 justify-center items-center space-x-2 mb-4">
+          <Icons.trophy />
+          <h2 className="font-sans font-bold tracking-widest text-2xl leading-[0.1em] uppercase text-[#734060] m-0">
             Top Rated Recipes
           </h2>
         </div>
-        <p className="hidden md:block">
+        <p className="hidden md:block font-serif">
           Out of all the many recipes on Pinch of Yum, these are our shining
           stars - the recipes we come back to again and again (and again).
         </p>
@@ -55,7 +57,7 @@ async function TopRated() {
           </div>
         ))}
         <Link
-          className="btn bg-[#734060] block text-center text-white px-1 py-0.75 uppercase font-bold mt-8 md:mt-12 max-w-md mx-auto"
+          className="font-serif bg-[#734060] block text-center text-white px-1 py-3 uppercase font-bold mt-8 md:mt-12 max-w-md mx-auto"
           href="https://pinchofyum.com/recipes/all/"
         >
           + View All Recipes
