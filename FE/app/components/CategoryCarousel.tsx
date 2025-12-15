@@ -33,7 +33,7 @@ function CategoryCarousel({ data }: CategoryCarouselProps) {
                   className="pl-4 md:basis-1/3 lg:basis-1/4"
                 >
                   <div className="space-y-3">
-                    <div className="h-[375px] overflow-hidden rounded-lg">
+                    <div className="h-[295px] overflow-hidden rounded-lg">
                       <StrapiImage
                         src={recipe.image[0].url}
                         alt={recipe?.name || "Recipe Image"}
@@ -42,7 +42,7 @@ function CategoryCarousel({ data }: CategoryCarouselProps) {
                         className="w-full h-full object-cover"
                       />
                     </div>
-                    <p className="text-center font-medium text-gray-800">
+                    <p className="text-center font-domaine font-bold text-gray-800">
                       {recipe.name}
                     </p>
                   </div>

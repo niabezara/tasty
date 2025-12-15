@@ -24,7 +24,7 @@ function FeaturedHeader({ category }: { category: Category }) {
               className="rounded-full object-contain w-[183px] h-[183px]"
             />
           </Link>
-          <div className=" text-center font-sans font-semibold tracking-wider text-gray-500 mx-12 mt-4 md:mx-0 md:pb-8 text-xxs md:text-sm">
+          <div className=" text-center font-mono font-bold tracking-wider text-gray-500 mx-12 mt-4 md:mx-0 md:pb-8 text-xxs md:text-sm">
             Featured Recipe:
             <Link
               className="block  transition-colors duration-200 ease-in-out underline text-[#734060] hover:text-white hover:bg-amber-500 hover:no-underline"

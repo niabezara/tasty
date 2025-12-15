@@ -48,7 +48,7 @@ async function TopRated() {
                     height={recipe.image?.[0]?.height}
                     width={recipe.image?.[0]?.width}
                   />
-                  <p className="block font-domaine text-lg normal-case tracking-normal leading-tight text-black">
+                  <p className="block font-domaine text-lg normal-case tracking-normal font-bold leading-tight text-black">
                     {recipe.name}
                   </p>
                 </div>
