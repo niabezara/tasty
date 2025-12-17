@@ -9,7 +9,7 @@ const HeaderData = [
   { name: "Home", link: "/" },
   { name: "About", link: "/about" },
   { name: "Recipes", link: "/recipes" },
-  { name: "Start Here", link: "/start-here" },
+  // { name: "Start Here", link: "/start-here" },
 ];
 
 export default function Navigation() {
