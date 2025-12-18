@@ -9,7 +9,7 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "./ui/carousel";
-import { VideoRecipeItem } from "../types/FavVideoTypes";
+import { VideoRecipeItem } from "../types/favVideoTypes";
 import { Icons } from "./Icons";
 
 function FavRecepiesVideoComponent({ data }: { data: VideoRecipeItem[] }) {

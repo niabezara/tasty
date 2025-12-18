@@ -4,34 +4,27 @@
 
 import { factories } from "@strapi/strapi";
 
-interface PaginationQuery {
-  page?: number;
-  pageSize?: number;
-}
+type PaginationQuery = {
+  page?: string;
+  pageSize?: string;
+};
 
-export default factories.createCoreController(
-  "api::blog.blog",
-  ({ strapi }) => ({
-    async find(ctx) {
-      const pagination = (ctx.query.pagination as PaginationQuery) || {};
-      const page = pagination.page || 1;
-      const pageSize = pagination.pageSize || 10;
+export default factories.createCoreController("api::blog.blog", () => ({
+  async find(ctx) {
+    const pagination = (ctx.query.pagination ?? {}) as PaginationQuery;
 
-      const maxPageSize = 50;
-      const sanitizedPageSize = Math.min(Number(pageSize), maxPageSize);
+    const page = Number(pagination.page) || 1;
+    const pageSize = Math.min(Number(pagination.pageSize) || 10, 50);
 
-      ctx.query = {
-        ...ctx.query,
-        pagination: {
-          page: Number(page),
-          pageSize: sanitizedPageSize,
-          withCount: true,
-        },
-      };
+    ctx.query = {
+      ...ctx.query,
+      pagination: {
+        page: String(page),
+        pageSize: String(pageSize),
+        withCount: "true",
+      },
+    };
 
-      const { data, meta } = await super.find(ctx);
-
-      return { data, meta };
-    },
-  })
-);
+    return await super.find(ctx);
+  },
+}));

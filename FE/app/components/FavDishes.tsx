@@ -1,4 +1,4 @@
-import { VideoRecipeResponse } from "../types/FavVideoTypes";
+import { VideoRecipeResponse } from "../types/favVideoTypes";
 import FavRecepiesVideoComponent from "./FavRecepiesVideoComponent";
 
 function FavDishes({ data }: { data: VideoRecipeResponse }) {

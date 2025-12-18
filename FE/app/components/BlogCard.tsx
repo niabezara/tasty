@@ -1,5 +1,5 @@
 import { StrapiImage } from "../lib/strapi-image";
-import { BlogData } from "../types/BlogTypes";
+import { BlogData } from "../types/blogTypes";
 import Link from "next/link";
 
 interface BlogCardProps {
