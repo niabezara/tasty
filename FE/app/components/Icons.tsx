@@ -59,4 +59,22 @@ export const Icons = {
       <path d="M232,64H208V56a16,16,0,0,0-16-16H64A16,16,0,0,0,48,56v8H24A16,16,0,0,0,8,80V96a40,40,0,0,0,40,40h3.65A80.13,80.13,0,0,0,120,191.61V216H96a8,8,0,0,0,0,16h64a8,8,0,0,0,0-16H136V191.58c31.94-3.23,58.44-25.64,68.08-55.58H208a40,40,0,0,0,40-40V80A16,16,0,0,0,232,64ZM48,120a24,24,0,0,1-24-24V80h24v40Zm144,0V56H64v64a64,64,0,0,0,128,0Zm40-24a24,24,0,0,1-24,24V80h24Z" />
     </svg>
   ),
+  recipe: ({ className }: SvgExtendedProps) => (
+    <svg
+      className={className || "w-8 h-8 md:w-10 md:h-10"}
+      viewBox="0 0 24 24"
+      fill="currentColor"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <title>All Recipes</title>
+      <path
+        d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        fill="none"
+      />
+    </svg>
+  ),
 };

@@ -58,7 +58,7 @@ async function TopRated() {
         ))}
         <Link
           className="font-serif bg-[#734060] block text-center text-white px-1 py-3 uppercase font-bold mt-8 md:mt-12 max-w-md mx-auto"
-          href="https://pinchofyum.com/recipes/all/"
+          href="/allRecipe"
         >
           + View All Recipes
         </Link>

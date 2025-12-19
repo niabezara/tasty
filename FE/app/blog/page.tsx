@@ -1,14 +1,6 @@
 import AdUnit from "../components/AdUnit";
 import BlogCard from "../components/BlogCard";
-
-import {
-  Pagination,
-  PaginationContent,
-  PaginationItem,
-  PaginationLink,
-  PaginationNext,
-  PaginationPrevious,
-} from "../components/ui/pagination";
+import AppPagination from "../components/AppPagination";
 import { getStrapiData } from "../data-access/getStrapiData";
 import { BlogData } from "../types/blogTypes";
 
@@ -47,49 +39,7 @@ export default async function Page({ searchParams }: PageProps) {
 
         {/* Pagination */}
         <div className="mt-10 flex flex-col gap-6 items-center">
-          <Pagination>
-            <PaginationContent>
-              {/* Previous */}
-              <PaginationItem>
-                <PaginationPrevious
-                  href={`?page=${Math.max(1, currentPage - 1)}`}
-                  aria-disabled={currentPage === 1}
-                  className={
-                    currentPage === 1 ? "pointer-events-none opacity-50" : ""
-                  }
-                />
-              </PaginationItem>
-
-              {/* Pages */}
-              {Array.from({ length: pageCount }).map((_, i) => {
-                const page = i + 1;
-                return (
-                  <PaginationItem key={page}>
-                    <PaginationLink
-                      className="text-[#734060]"
-                      href={`?page=${page}`}
-                      isActive={page === currentPage}
-                    >
-                      {page}
-                    </PaginationLink>
-                  </PaginationItem>
-                );
-              })}
-
-              {/* Next */}
-              <PaginationItem>
-                <PaginationNext
-                  href={`?page=${Math.min(pageCount, currentPage + 1)}`}
-                  aria-disabled={currentPage === pageCount}
-                  className={
-                    currentPage === pageCount
-                      ? "pointer-events-none opacity-50"
-                      : ""
-                  }
-                />
-              </PaginationItem>
-            </PaginationContent>
-          </Pagination>
+          <AppPagination currentPage={currentPage} pageCount={pageCount} />
         </div>
       </section>
       <aside className="col-span-4">
