@@ -1,4 +1,6 @@
+import AdUnit from "../components/AdUnit";
 import BlogCard from "../components/BlogCard";
+
 import {
   Pagination,
   PaginationContent,
@@ -64,6 +66,7 @@ export default async function Page({ searchParams }: PageProps) {
                 return (
                   <PaginationItem key={page}>
                     <PaginationLink
+                      className="text-[#734060]"
                       href={`?page=${page}`}
                       isActive={page === currentPage}
                     >
@@ -89,6 +92,11 @@ export default async function Page({ searchParams }: PageProps) {
           </Pagination>
         </div>
       </section>
+      <aside className="col-span-4">
+        <div className="hidden md:block mb-6 mt-8">
+          <AdUnit />
+        </div>
+      </aside>
     </div>
   );
 }

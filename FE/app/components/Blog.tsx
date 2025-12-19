@@ -1,8 +1,8 @@
 import Link from "next/link";
 import Image from "next/image";
-import { BlogData } from "../types/blogTypes";
 import { CategoryResponse } from "../types";
 import BlogCard from "./BlogCard";
+import { BlogData } from "../types/blogTypes";
 function Blog({
   data,
   Category,

@@ -9,7 +9,6 @@ const pinchOfYum: FooterLink[] = [
   { name: "About", link: "/about" },
   { name: "Recipes", link: "/recipes" },
   { name: "Blog", link: "/blog" },
-  { name: "Contact", link: "/contact" },
 ];
 
 const foodAndRecipes: FooterLink[] = [
