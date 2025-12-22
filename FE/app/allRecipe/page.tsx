@@ -39,7 +39,10 @@ async function page({ searchParams }: PageProps) {
             key={recipe.id}
             className="col-span-6 md:col-span-3 text-center pb-6"
           >
-            <Link href="" className="block md:hover:opacity-60 space-y-2">
+            <Link
+              href={`/recipes/${recipe.documentId}`}
+              className="block md:hover:opacity-60 space-y-2"
+            >
               <StrapiImage
                 src={recipe?.image[0].url}
                 alt={recipe?.image[0].name}

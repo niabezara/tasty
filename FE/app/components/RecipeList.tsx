@@ -21,7 +21,7 @@ function RecipeList({ data }: { data: Category[] }) {
             >
               <Link
                 className="block ml-2 hover:text-black hover:underline"
-                href={`https://pinchofyum.com/recipes/${category.slug}`}
+                href={``}
               >
                 {category.title}
               </Link>
