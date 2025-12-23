@@ -68,6 +68,7 @@ export interface Recipe {
   publishedAt: string | null;
   name: string;
   slug: string | null;
+  ingredients: string;
   description: RichTextBlock[];
   cookTime: number | null;
   image: StrapiImage[];

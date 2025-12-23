@@ -40,7 +40,7 @@ async function page({ searchParams }: PageProps) {
             className="col-span-6 md:col-span-3 text-center pb-6"
           >
             <Link
-              href={`/recipes/${recipe.documentId}`}
+              href={`/allRecipe/${recipe.documentId}`}
               className="block md:hover:opacity-60 space-y-2"
             >
               <StrapiImage

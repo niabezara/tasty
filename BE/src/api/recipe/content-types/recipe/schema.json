@@ -44,6 +44,12 @@
       "relation": "oneToOne",
       "target": "api::category.category",
       "mappedBy": "featuredRecipe"
+    },
+    "serving": {
+      "type": "string"
+    },
+    "ingredients": {
+      "type": "richtext"
     }
   }
 }

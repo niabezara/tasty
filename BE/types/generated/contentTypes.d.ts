@@ -584,6 +584,7 @@ export interface ApiRecipeRecipe extends Struct.CollectionTypeSchema {
       'images' | 'files' | 'videos' | 'audios',
       true
     >;
+    ingredients: Schema.Attribute.RichText;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
@@ -592,6 +593,7 @@ export interface ApiRecipeRecipe extends Struct.CollectionTypeSchema {
       Schema.Attribute.Private;
     name: Schema.Attribute.String;
     publishedAt: Schema.Attribute.DateTime;
+    serving: Schema.Attribute.String;
     slug: Schema.Attribute.UID;
     sub_collections: Schema.Attribute.Relation<
       'manyToMany',
