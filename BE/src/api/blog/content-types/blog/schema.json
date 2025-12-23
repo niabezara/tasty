@@ -26,6 +26,9 @@
     },
     "descriptionTest": {
       "type": "richtext"
+    },
+    "content": {
+      "type": "richtext"
     }
   }
 }

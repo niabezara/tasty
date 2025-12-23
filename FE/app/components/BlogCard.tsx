@@ -34,7 +34,7 @@ function BlogCard({ blog }: BlogCardProps) {
           </h2>
         </div>
         <p>{blog.descriptionTest}</p>
-        <Link href={`/blog/${blog.id}`}>
+        <Link href={`/blog/${blog.documentId}`}>
           <p className="text-yellow-500 hover:text-black mt-4 uppercase font-bold tracking-widest text-base">
             Continue Reading
           </p>
